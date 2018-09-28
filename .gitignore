@@ -1,0 +1,5 @@
+# for MacOS
+.DS_Store
+
+# Setting file by IDE
+.idea
