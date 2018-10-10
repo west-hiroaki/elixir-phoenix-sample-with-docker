@@ -32,6 +32,17 @@
   3. ローカルのブラウザで [`http://localhost:4000`](http://localhost:4000) にアクセス。  
     「Welcome to Phoenix!」ページが表示されればOK。
 
+## 対話式でのiex接続方法
+
+  `make server` 実行後（MySQLコンテナ起動後）に
+  
+  ```bash
+  $ cd my_app
+  $ iex -S mix
+  ```
+
+  [参考 - Elixir School](https://github.com/west-hiroaki/elixir-phoenix-sample-with-docker)
+
 ## メモ：ASDF について
 
   Elixir のバージョン管理として、[ASDF](https://github.com/asdf-vm/asdf) を使用しています。  
