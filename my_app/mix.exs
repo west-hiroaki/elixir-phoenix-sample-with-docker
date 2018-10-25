@@ -11,6 +11,7 @@ defmodule MyApp.MixProject do
       start_permanent: Mix.env == :prod,
       aliases: aliases(),
       deps: deps()
+      dialyzer: [plt_add_apps: [:mix, :ex_unit]]
     ]
   end
 
@@ -43,6 +44,7 @@ defmodule MyApp.MixProject do
       {:jason, "~> 1.0"},
       {:cowboy, "~> 1.0"},
       {:distillery, "~> 2.0", runtime: false},
+      {:dialyxir, "~> 0.5.1", only: [:dev, :test], runtime: false}
     ]
   end
 
