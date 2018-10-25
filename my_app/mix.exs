@@ -44,7 +44,8 @@ defmodule MyApp.MixProject do
       {:jason, "~> 1.0"},
       {:cowboy, "~> 1.0"},
       {:distillery, "~> 2.0", runtime: false},
-      {:dialyxir, "~> 0.5.1", only: [:dev, :test], runtime: false}
+      {:dialyxir, "~> 0.5.1", only: [:dev, :test], runtime: false},
+      {:credo, "~> 0.9.3", only: [:dev, :test], runtime: false}
     ]
   end
 
