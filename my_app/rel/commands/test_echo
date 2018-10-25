@@ -1,0 +1,7 @@
+# パラメータの単体（文字列）渡し
+echo "MyApp.Commands.Echo echo_param パラメータ単体渡し"
+release_ctl eval --mfa "Elixir.MyApp.Commands.Echo.echo_param/1" -- "$1"
+
+# パラメータの配列渡し
+echo "MyApp.Commands.Echo echo_param パラメータ配列渡し"
+release_ctl eval --mfa "Elixir.MyApp.Commands.Echo.echo_param/1" --argv -- "$@"

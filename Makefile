@@ -16,6 +16,13 @@ init_db:
 npm.install: ensure
 	cd my_app/assets && npm install
 
+# ローカル環境でビルドを行う
+# mix release に対して2つの環境を指定
+#   MIX_ENV=dev ... mixの環境を指定。devを指定した場合は「Mix.env() == :dev」になる
+#   --env dev   ... rel/config.exs のビルド対象environment。devを指定した場合は「environment :dev do」が適用される
+release.local: ensure
+	cd my_app && MIX_ENV=dev mix release --env dev
+
 deps.get: ensure
 	cd my_app && mix deps.get $(ARGS)
 

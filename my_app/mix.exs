@@ -41,7 +41,8 @@ defmodule MyApp.MixProject do
       {:mariaex, ">= 0.8.3"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:distillery, "~> 2.0", runtime: false},
     ]
   end
 

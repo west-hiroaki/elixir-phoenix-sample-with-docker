@@ -32,6 +32,24 @@
   3. ローカルのブラウザで [`http://localhost:4000`](http://localhost:4000) にアクセス。  
     「Welcome to Phoenix!」ページが表示されればOK。
 
+## distillery (コマンド実行) 確認方法
+
+  1. ビルド
+      ```bash
+      $ make release.local
+      ```
+  
+  2. テスト用コマンド実行   
+    `./my_app/rel/commands/test_echo` を実行してみる。
+      ```bash
+      $ my_app/_build/dev/rel/my_app/bin/my_app test_echo hello! hello2!
+
+      MyApp.Commands.Echo echo_param パラメータ単体渡し
+      "hello!"
+      MyApp.Commands.Echo echo_param パラメータ配列渡し
+      ["hello!", "hello2!"]
+      ```
+
 ## 対話式でのiex接続方法
 
   `make server` 実行後（MySQLコンテナ起動後）に
