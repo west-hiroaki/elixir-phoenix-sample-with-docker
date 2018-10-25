@@ -53,14 +53,14 @@
     $ asdf plugin-add elixir
 
     # Elixir の対象verをインストールする
-    $ asdf install elixir 1.6.6-otp-21
+    $ asdf install elixir 1.7.3-otp-21
 
     # Elixir の対象verへの切り替える
-    $ asdf local elixir 1.6.6-otp-21
+    $ asdf local elixir 1.7.3-otp-21
     
     # verが切り替わっていることを確認する
     $ asdf current
-    elixir         1.6.6-otp-21
+    elixir         1.7.3-otp-21
     ```
   * このプロジェクトでは、個別コマンドではなく以下の方法で使用しています。
     * `.tool-versions` ファイルを用意。この中で言語＆verを指定。  
