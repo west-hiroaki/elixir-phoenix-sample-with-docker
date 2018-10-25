@@ -32,6 +32,8 @@ deps.update: ensure
 deps.clean: ensure
 	cd my_app && mix deps.clean $(ARGS)
 
+format: ensure
+	cd my_app && mix format --check-equivalent $(ARGS)
 
 # 型チェックを行う
 dialyzer: ensure
