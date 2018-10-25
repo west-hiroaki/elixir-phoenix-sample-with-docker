@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "start git hooks pre-commit"
+exec make pre-commit

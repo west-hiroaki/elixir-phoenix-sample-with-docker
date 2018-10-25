@@ -4,7 +4,7 @@ ensure:
 	@./.tool-versions-ensure.sh
 
 # 環境初期化
-init: build up init_db deps.get npm.install
+init: build up init_db deps.get npm.install githooks-init
 
 build:
 	$(DOCKER_COMPOSE) build
@@ -31,6 +31,14 @@ deps.update: ensure
 
 deps.clean: ensure
 	cd my_app && mix deps.clean $(ARGS)
+
+.PHONY: githooks-init
+githooks-init:
+	$(shell if [ git rev-parse --is-inside-work-tree > /dev/null 2>&1 ]; then git init; fi)
+	git config core.hooksPath .githooks
+
+.PHONY: pre-commit
+pre-commit: format credo
 
 format: ensure
 	cd my_app && mix format --check-equivalent $(ARGS)
