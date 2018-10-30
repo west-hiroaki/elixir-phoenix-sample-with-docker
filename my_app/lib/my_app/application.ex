@@ -10,7 +10,15 @@ defmodule MyApp.Application do
     repo_children = Application.fetch_env!(:my_app, :ecto_repos)
 
     # アプリケーション起動タイミングを確認するために埋め込んでおく
+    # 1. ローカルサーバ起動時
+    #    mix phx.server 実行したタイミング
+    # 2. ビルドしたパッケージサーバ起動時
+    #    _build/dev/rel/my_app/bin/my_app foreground 実行したタイミング
+    # 3. Distillery実行時
+    #    各コマンド関数内で「Application.ensure_all_started(:my_app)」を実行したタイミング
+    #    Distilleryは明示的にこれを実行しないと起動しない。Ectoなどアプリケーション起動が必要なもので実行しないとエラーになる。
     IO.puts("■■ start application")
+
     for repo <- repo_children do
       IO.puts(repo)
     end
