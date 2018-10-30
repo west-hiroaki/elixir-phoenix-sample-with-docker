@@ -25,11 +25,19 @@
       ```bash
       $ make init
       ```
-  2. phoenix サーバ起動。
+
+  2. Unitテスト実行。   
+     エラーが発生しないことを確認。
+      ```bash
+      $ make test
+      ```
+
+  3. phoenix Webサーバ起動。
       ```bash
       $ make server
       ```
-  3. ローカルのブラウザで [`http://localhost:4000`](http://localhost:4000) にアクセス。  
+
+  4. ローカルのブラウザで [`http://localhost:4000`](http://localhost:4000) にアクセス。  
     「Welcome to Phoenix!」ページが表示されればOK。
 
 ## distillery (コマンド実行) 確認方法

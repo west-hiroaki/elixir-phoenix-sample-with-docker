@@ -56,8 +56,21 @@ migrate:
 up:
 	$(DOCKER_COMPOSE) up -d
 
+up.dev:
+	$(DOCKER_COMPOSE) up -d mysql
+	# MySQL コンテナ起動を待つ
+	# https://qiita.com/ta_ta_ta_miya/items/c7acb37991f01b5641a7
+	./my_app/tools/dockerize-darwin -wait tcp://localhost:3336 -timeout 30s
+
+up.test:
+	$(DOCKER_COMPOSE) up -d mysql
+	./my_app/tools/dockerize-darwin -wait tcp://localhost:3336 -timeout 30s
+
+test: up.test
+	cd my_app && MIX_ENV=test mix test $(ARGS)
+
 # phoenix サーバ起動
-server: up
+server: up.dev
 	cd my_app && mix phx.server
 
 ps:

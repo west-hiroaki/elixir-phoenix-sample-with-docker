@@ -14,7 +14,8 @@ config :my_app, MyApp.Repo,
   adapter: Ecto.Adapters.MySQL,
   username: "root",
   password: "",
-  database: "my_phoenix_dev",
+  database: "my_phoenix_test",
   hostname: "127.0.0.1",
   port: 3336,
-  pool_size: 10
+  pool_size: 10,
+  pool: Ecto.Adapters.SQL.Sandbox
