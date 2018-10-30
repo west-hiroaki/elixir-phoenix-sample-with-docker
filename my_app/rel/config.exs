@@ -30,7 +30,11 @@ environment :dev do
   # the --env flag to Distillery explicitly if you want to use
   # dev mode.
   set dev_mode: true
-  set include_erts: false
+
+  # true にして erts を入れないと エラー時のスタックトレースの行頭にアプリ名が表示されない
+  # あと、supervisor に登録されないかも
+  set include_erts: true
+
   set cookie: :"%My.X!,0bb&L*gGpwIcZl|Jm29@z;HE[bma.d@{LR8n;7;//~0K.i!F2PP9`_!2z"
 end
 
@@ -53,8 +57,10 @@ release :my_app do
   set applications: [
     :runtime_tools
   ]
+
   set commands: [
     test_echo: "rel/commands/test_echo",
+    ecto_test: "rel/commands/ecto_test",
   ]
 end
 

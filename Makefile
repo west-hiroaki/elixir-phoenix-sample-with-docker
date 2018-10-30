@@ -1,4 +1,8 @@
 DOCKER_COMPOSE = docker-compose
+COLOR_GREEN = $(shell echo "\033[0;32m")
+COLOR_BGREEN = $(shell echo "\033[1;32m")
+COLOR_BBLUE = $(shell echo "\033[1;36m")
+COLOR_RESET = $(echo "\033[0m")
 
 ensure:
 	@./.tool-versions-ensure.sh
@@ -50,8 +54,10 @@ credo: ensure
 dialyzer: ensure
 	cd my_app && mix dialyzer $(ARGS)
 
-migrate:
-	$(DOCKER_COMPOSE) run --rm python_app python manage.py migrate
+ecto.migrate:
+	@echo '$(COLOR_GREEN) make migrate'
+	@echo $(COLOR_RESET)
+	cd my_app && mix ecto.migrate
 
 up:
 	$(DOCKER_COMPOSE) up -d
@@ -87,4 +93,4 @@ logs:
 
 # mysqlアプリコンテナにbash接続
 bash:
-	$(DOCKER_COMPOSE) exec mysql bash
+	$(DOCKER_COMPOSE) run --no-deps --rm mysql /bin/bash

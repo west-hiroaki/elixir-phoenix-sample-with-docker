@@ -8,7 +8,15 @@ defmodule MyApp.Commands.Echo do
   """
   @spec echo_param(List) :: :ok
   def echo_param(params) do
-    IO.inspect(params)
+    if is_list(params) do
+      # 配列の場合はループさせて表示
+      for param <- params do
+        IO.puts(param)
+      end
+    else
+      IO.puts(params)
+    end
+
     :ok
   end
 end

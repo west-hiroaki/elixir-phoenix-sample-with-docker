@@ -47,7 +47,7 @@
       $ make release.local
       ```
   
-  2. テスト用コマンド実行   
+  2. パラメータを表示するだけのテスト用コマンド実行   
     `./my_app/rel/commands/test_echo` を実行してみる。
       ```bash
       $ my_app/_build/dev/rel/my_app/bin/my_app test_echo hello! hello2!
@@ -55,7 +55,23 @@
       MyApp.Commands.Echo echo_param パラメータ単体渡し
       "hello!"
       MyApp.Commands.Echo echo_param パラメータ配列渡し
-      ["hello!", "hello2!"]
+      "hello!"
+      "hello2!"
+      ```
+
+  3. Ectoアクセスするテスト用コマンド実行   
+    `./my_app/rel/commands/ecto_test` を実行してみる。
+      ```bash
+      $ my_app/_build/dev/rel/my_app/bin/my_app ecto_test
+
+      MyApp.Commands.EctoTest
+      [debug] QUERY OK db=5.9ms
+      INSERT INTO `users` (`email`,`name`,`inserted_at`,`updated_at`) VALUES (?,?,?,?) ["user@example.com", "hiro", {{2018, 10, 30}, {9, 51, 35, 715441}}, {{2018, 10, 30}, {9, 51, 35, 720630}}]
+      [debug] QUERY OK source="users" db=6.0ms decode=0.1ms
+      SELECT u0.`id`, u0.`bio`, u0.`email`, u0.`last_logined_at`, u0.`name`, u0.`number_of_pets`, u0.`inserted_at`, u0.`updated_at` FROM `users` AS u0 []
+      id=1, name=hiro1, email=user1@example.com
+      id=2, name=hiro2, email=user1@example.com
+      id=3, name=hiro3, email=user@example.com
       ```
 
 ## 対話式でのiex接続方法

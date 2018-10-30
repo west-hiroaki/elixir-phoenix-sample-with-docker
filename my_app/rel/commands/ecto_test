@@ -1,0 +1,2 @@
+echo "MyApp.Commands.EctoTest"
+release_ctl eval --mfa "Elixir.MyApp.Commands.EctoTest.main/0"

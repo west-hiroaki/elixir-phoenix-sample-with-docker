@@ -6,15 +6,23 @@ defmodule MyApp.Application do
   use Application
 
   def start(_type, _args) do
+    # Start the Ecto repository
+    repo_children = Application.fetch_env!(:my_app, :ecto_repos)
+
+    # アプリケーション起動タイミングを確認するために埋め込んでおく
+    IO.puts("■■ start application")
+    for repo <- repo_children do
+      IO.puts(repo)
+    end
+
     # List all child processes to be supervised
-    children = [
-      # Start the Ecto repository
-      MyApp.Repo,
-      # Start the endpoint when the application starts
-      MyAppWeb.Endpoint
-      # Starts a worker by calling: MyApp.Worker.start_link(arg)
-      # {MyApp.Worker, arg},
-    ]
+    children =
+      [
+        # Start the endpoint when the application starts
+        MyAppWeb.Endpoint
+        # Starts a worker by calling: MyApp.Worker.start_link(arg)
+        # {MyApp.Worker, arg},
+      ] ++ repo_children
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
